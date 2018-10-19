@@ -1,0 +1,21 @@
+{
+  "name": "cookie_parser",
+  "version": "1.0.0",
+  "description": "cookie-parser cookie-session",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cookie-parser",
+    "cookie-session"
+  ],
+  "author": "lnden",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.3",
+    "cookie-session": "^2.0.0-beta.3",
+    "express": "^4.16.4",
+    "express-static": "^1.2.6"
+  }
+}
