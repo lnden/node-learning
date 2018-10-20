@@ -1,0 +1,19 @@
+{
+  "name": "node_bodyparser",
+  "version": "1.0.0",
+  "description": "node bodyparser example",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "get",
+    "post"
+  ],
+  "author": "lnden",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4"
+  }
+}

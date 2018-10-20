@@ -1,7 +1,7 @@
 {
   "name": "cookie_parser",
   "version": "1.0.0",
-  "description": "cookie-parser cookie-session",
+  "description": "node cookie-parser/cookie-session example",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
