@@ -7,6 +7,8 @@ const pathLib = require('path');
 const server = express();
 
 
+
+server.use(bodyParser.urlencoded({extended:false}))
 // server.use(objMulter.single('lice')); //接受'f1'
 server.use(objMulter.any()); //接受所有
 
@@ -32,10 +34,6 @@ server.use('/',(req,res)=>{
 // enctype = "multipart/form-data"  //真正上传表单的数据
 //         = "application/x-www-form-urlencoded"    //只能用来上传值 body-parser
 //         = "text/plain"   //纯文本
-
-
-
-
 
 
 
