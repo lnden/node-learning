@@ -1,0 +1,9 @@
+// 混合写法,普通属性要想写json,可以使用&sttributes
+html
+	head
+		style
+	body
+		div(title="aaa",id="div1")
+		div#div1(title="aaa")
+
+		div&attributes({title:'aaa',id:"div1"})
