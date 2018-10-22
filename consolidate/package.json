@@ -1,0 +1,20 @@
+{
+  "name": "consolidate",
+  "version": "1.0.0",
+  "description": "consolidate engine",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "consolidate"
+  ],
+  "author": "lnden",
+  "license": "ISC",
+  "dependencies": {
+    "consolidate": "^0.15.1",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "jade": "^1.11.0"
+  }
+}

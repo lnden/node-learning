@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    我的名字叫 <%= name %>
+    <ul>
+        <% for(var i=0;i<data.length;i++){ %>
+            <li>姓名：<%= data[i].username %> - 年龄：<%= data[i].age %> - 地址：<%= data[i].address %></li>
+        <% } %>
+    </ul>
+
+    <ul>
+        <% data.forEach(function(item){%>
+            <li>姓名：<%= item.username %> - 年龄：<%= item.age %> - 地址：<%= item.address %></li>
+        <% }) %>
+    </ul>
+            
+</body>
+</html>
