@@ -43,6 +43,11 @@ server.set('view engine','html');
 server.set('views','/views');
 server.engine('html',consolidate.ejs);
 
+
+/** 接收用户请求 */
+
+
+
 // 5.使用 express-static处理静态文件
 server.use(expressStatic('./www'))
 server.listen(8088,()=>console.log('Server runing at http://localhost:8088···'));
