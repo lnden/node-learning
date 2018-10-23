@@ -14,3 +14,7 @@ A node learning libraryA node learning library
 15 multer* multer
 
 16 consolidate*  express.Router();*
+
+17.数据库建表~uer_table*
+
+18.引入mysql  使用 INSERT INTO user_table*  库名、表名、字段加``
