@@ -15,6 +15,10 @@ A node learning libraryA node learning library
 
 16 consolidate*  express.Router();*
 
-17.数据库建表~uer_table*
+17.数据库建表~uer_table
 
-18.引入mysql  使用 INSERT INTO user_table*  库名、表名、字段加``
+18.引入mysql*  使用 INSERT INTO user_table*  库名、表名、字段加
+
+19.数据库建表   blog  创建三个表  banner_table/article_table/user_table
+
+20.blog*   mysql数据库 实战nodejs
