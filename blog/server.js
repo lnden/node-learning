@@ -84,7 +84,26 @@ server.get('/',(req,res)=>{
 	res.render('index.ejs',{banners:res.banners,articles:res.articles})
 })
 server.use('/article',(req,res)=>{
-	res.render('conText.ejs')
+	if(req.query.id){
+		db.query(`SELECT * FROM article_table WHERE ID=${req.query.id}`,(err,data)=>{
+			if(err){
+				res.status(500).send('数据库有问').end();
+			}else{
+				if(data.length==0){
+					res.status(404).send('您请求的文章找不到').end();
+				}else{
+					res.status(200);
+					// var articleData = data[0];
+					// var oDate = new Date();
+					// oDate.setTime(articleData.post_time*1000)
+					// articleData.sData = 
+					res.render('conText.ejs',{article_data:data[0]})
+				}
+			}
+		})
+	}else{
+		res.status(404).send('您请求的文章找不到').end();
+	}
 })
 
 
