@@ -9,7 +9,8 @@ const consolidate = require('consolidate');
 const mysql = require('mysql');
 const server = express();
 
-const db = mysql.createConnection({
+// const db = mysql.createConnection({
+const db = mysql.createPool({   //连接池
 	host:'localhost',
 	// port:3306,
 	user:'root',
@@ -40,12 +41,51 @@ server.use(bodyParser.urlencoded({
 
 // 4.使用 consolidate模板引擎集合
 server.set('view engine','html');
-server.set('views','/views');
+server.set('views','./template');
 server.engine('html',consolidate.ejs);
 
 
-/** 接收用户请求 */
 
+
+/** 接收用户 */
+server.use('/',(req,res,next)=>{
+	//使用next(),查询banner
+	db.query('SELECT * FROM banner_table',(err,data)=>{
+		if(err){
+			res.status(500).send('database error').end();
+			// console.error(err)
+		}else{
+			// res.render('index.ejs',{banners:data});
+			// console.log(data)
+			res.banners = data;
+			next();
+		}
+	})
+})
+server.get('/',(req,res,next)=>{
+	//查询article
+	// console.log(res.banners)
+	db.query('SELECT ID,title,summary FROM article_table',(err,data)=>{
+		if(err){
+			res.status(500).send('database error').end();
+			// console.error(err)
+		}else{
+			// res.render('index.ejs',{articles:data});
+			// console.log(data)
+			res.articles = data;
+			next()
+		}
+	})
+})
+server.get('/',(req,res)=>{
+	//查询article
+	// console.log(res.banners)
+	// console.log(res.articles)
+	res.render('index.ejs',{banners:res.banners,articles:res.articles})
+})
+server.use('/article',(req,res)=>{
+	res.render('conText.ejs')
+})
 
 
 // 5.使用 express-static处理静态文件
