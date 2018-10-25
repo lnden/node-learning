@@ -8,6 +8,7 @@ const consolidate = require('consolidate');
 //本次主要使用mysql配合blog表
 const mysql = require('mysql');
 const server = express();
+const common = require('./libs/common')
 
 // const db = mysql.createConnection({
 const db = mysql.createPool({   //连接池
@@ -83,24 +84,51 @@ server.get('/',(req,res)=>{
 	// console.log(res.articles)
 	res.render('index.ejs',{banners:res.banners,articles:res.articles})
 })
+
 server.use('/article',(req,res)=>{
 	if(req.query.id){
-		db.query(`SELECT * FROM article_table WHERE ID=${req.query.id}`,(err,data)=>{
-			if(err){
-				res.status(500).send('数据库有问').end();
-			}else{
-				if(data.length==0){
-					res.status(404).send('您请求的文章找不到').end();
+		if(req.query.act=='like'){
+			//给文章增加一个赞
+			db.query(`UPDATE article_table SET n_like=n_like+1 WHERE ID=${req.query.id}`,(err,data)=>{
+				if(err){
+					res.status(500).send('数据库小问题').end();
 				}else{
-					res.status(200);
-					// var articleData = data[0];
-					// var oDate = new Date();
-					// oDate.setTime(articleData.post_time*1000)
-					// articleData.sData = 
-					res.render('conText.ejs',{article_data:data[0]})
+					//显示文章
+					db.query(`SELECT * FROM article_table WHERE ID=${req.query.id}`,(err,data)=>{
+						if(err){
+							res.status(500).send('数据库有问').end();
+						}else{
+							if(data.length==0){
+								res.status(404).send('您请求的文章找不到').end();
+							}else{
+								res.status(200);
+								var articleData = data[0];
+								articleData.sDate = common.time2date(articleData.post_time);
+								articleData.content = articleData.content.replace(/^/gm,'<p>').replace(/$/gm,'</p>');
+								res.render('conText.ejs',{article_data:data[0]})
+							}
+						}
+					})
 				}
-			}
-		})
+			})
+		}else{
+			//显示文章
+			db.query(`SELECT * FROM article_table WHERE ID=${req.query.id}`,(err,data)=>{
+				if(err){
+					res.status(500).send('数据库有问').end();
+				}else{
+					if(data.length==0){
+						res.status(404).send('您请求的文章找不到').end();
+					}else{
+						res.status(200);
+						var articleData = data[0];
+						articleData.sDate = common.time2date(articleData.post_time);
+						articleData.content = articleData.content.replace(/^/gm,'<p>').replace(/$/gm,'</p>');
+						res.render('conText.ejs',{article_data:data[0]})
+					}
+				}
+			})
+		}
 	}else{
 		res.status(404).send('您请求的文章找不到').end();
 	}
