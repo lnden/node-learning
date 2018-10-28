@@ -29,4 +29,15 @@ A node learning libraryA node learning library
 
 23.blog*    实现 赞功能，代码冗余
 
-24.blog*
+24.数据库mysql 简介
+
+25/26.增删改查，子句介绍 WHERE GROUP ORDER LIMIT
+筛选、合并、排序、限制
+
+SELECT class,COUNT(class) FROM student_table
+WHERE score>60
+GROUP BY class
+ORDER BY COUNT(class) DESC
+LIMIT 2;
+
+27.new project
