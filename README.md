@@ -40,4 +40,6 @@ GROUP BY class
 ORDER BY COUNT(class) DESC
 LIMIT 2;
 
-27.new project
+27.new project,创建数据字典
+
+28.前半部分定义数据字典，后半部分数据库建表
