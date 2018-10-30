@@ -65,3 +65,8 @@
 						email			varchar(32)
 						phone   		varchar(20)
 						subject		 	text
+
+admin_table
+	ID
+	username	varchar(32)
+	password	int
