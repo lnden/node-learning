@@ -94,7 +94,6 @@ module.exports = function(){
 		}
 	})
 	router.post('/banners',(req,res)=>{
-
 		let title = req.body.title;
 		let description = req.body.description;
 		let href = req.body.href;

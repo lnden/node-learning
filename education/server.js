@@ -38,7 +38,7 @@ server.engine('html',consolidate.ejs);
 // server.use('/article',require('./route/1.js')());
 // server.use('/blog',require('./route/2.js')());
 server.use('/',require('./route/web.js')())
-server.use('/admin',require('./route/admin.js')())
+server.use('/admin',require('./route/admin/index.js')())
 
 //5.default static
 server.use(expressStatic('./static'))
