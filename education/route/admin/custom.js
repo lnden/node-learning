@@ -16,14 +16,47 @@ module.exports = function(){
 	const router = express.Router();
 
 	router.get('/',(req,res)=>{
-		db.query(`SELECT * FROM custom_evaluation_table`,(err,data)=>{
-			if(err){
-				console.error(err);
-				res.status(500).send('database error').end()
-			}else{
-				res.render('admin/custom.ejs',{custom:data});
-			}
-		})
+		switch(req.query.act){
+			case 'mod':
+				break;
+			case 'del':
+				db.query(`SELECT * FROM custom_evaluation_table WHERE ID=${req.query.id}`,(err,data)=>{
+					if(err){
+						console.error(err);
+						res.status(500).send('database error').end();
+					}else{
+						if(data.length==0){
+							res.status(404).send('no this custom evaluation').end();
+						}else{
+							fs.unlink('static/upload/'+data[0].src,(err)=>{
+								if(err){
+									console.error(err);
+									res.status(500).send('file opration error').end();
+								}else{
+									db.query(`DELETE FROM custom_evaluation_table WHERE ID=${req.query.id}`,(err,data)=>{
+										if(err){
+											console.error(err);
+											res.status(500).send('database error').end();
+										}else{
+											res.redirect('/admin/custom');
+										}
+									})
+								}
+							})
+						}
+					}
+				})
+				break;
+			default:
+				db.query(`SELECT * FROM custom_evaluation_table`,(err,data)=>{
+					if(err){
+						console.error(err);
+						res.status(500).send('database error').end()
+					}else{
+						res.render('admin/custom.ejs',{custom:data});
+					}
+				})
+		}
 	})
 
 	//post请求添加或者是修改
