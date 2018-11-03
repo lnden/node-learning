@@ -52,7 +52,47 @@ module.exports = function(){
 		res.render('admin/index.ejs',{})
 	})
 	router.get('/banners',(req,res)=>{
-		res.render('admin/banners.ejs',{})
+		switch(req.query.act){
+			case 'mod':
+				break;
+			case 'del':
+			db.query(`DELETE FROM banner_table WHERE ID=${req.query.id}`,(err,data)=>{
+				if(err){
+					console.error(err);
+					res.status(500).send('database error').end();
+				}else{
+					res.redirect('/admin/banners');
+				}
+			})
+				break;
+			default:
+			db.query(`SELECT * FROM banner_table`,(err,data)=>{
+				if(err){
+					console.error(err);
+					res.status(500).send('database error').end();
+				}else{
+					res.render('admin/banners.ejs',{banners:data});
+				}
+			})
+		}
+	})
+	router.post('/banners',(req,res)=>{
+		let title = req.body.title;
+		let description = req.body.description;
+		let href = req.body.href;
+		if(!title || !description || !href){
+			res.status(400).send('arg error').end();	
+		}else{
+			db.query(`INSERT INTO banner_table (title,description,href) VALUE ('${title}','${description}','${href}')`,(err,data)=>{
+				if(err){
+					console.error(err);
+					res.status(500).send('database error').end();
+				}else{
+					res.redirect('/admin/banners');
+					// res.status(200).send('成功了').end();
+				}
+			})
+		}
 	})
 	return router
 }
