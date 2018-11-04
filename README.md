@@ -65,4 +65,10 @@ LIMIT 2;
 
 35. 用户评论已经完成，增删改查  上传图片，冗余代码~
 
-37.添加web/接口  /get_banners  /get_custom
+36.添加web/接口  /get_banners  /get_custom
+
+37.Promise--解决异步操作~
+异步操作：性能高、写程序非常麻烦~
+同步操作：性能低、写程序很简单
+
+promise generator sync/await
