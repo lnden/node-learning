@@ -37,7 +37,7 @@ server.engine('html',consolidate.ejs);
 //4.route
 // server.use('/article',require('./route/1.js')());
 // server.use('/blog',require('./route/2.js')());
-server.use('/',require('./route/web.js')())
+server.use('/',require('./route/web/')())
 server.use('/admin',require('./route/admin/index.js')())
 
 //5.default static
