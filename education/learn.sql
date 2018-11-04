@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50703
 File Encoding         : 65001
 
-Date: 2018-11-04 22:42:04
+Date: 2018-11-04 22:58:07
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -64,10 +64,6 @@ CREATE TABLE `banner_table` (
 -- ----------------------------
 -- Records of banner_table
 -- ----------------------------
-INSERT INTO `banner_table` VALUES ('3', '中国风', '测试第三个bnner', 'http://www.baidu.com');
-INSERT INTO `banner_table` VALUES ('4', '2018年11月3日', '测试数据~', 'http://www.baidu.com');
-INSERT INTO `banner_table` VALUES ('5', 'test01', 'censAKxnakxmalkxmlasmxlkamxMx,ZXM,ZM', '//asas/asdad/asda/sdas');
-INSERT INTO `banner_table` VALUES ('13', '陈文全ceshi', '扫航', 'http://google.com');
 
 -- ----------------------------
 -- Table structure for blog_table
@@ -124,9 +120,6 @@ CREATE TABLE `custom_evaluation_table` (
 -- ----------------------------
 -- Records of custom_evaluation_table
 -- ----------------------------
-INSERT INTO `custom_evaluation_table` VALUES ('22', '11111111', 'rrrrrrrrrrrrrrrrr', 'ac32544a70f49c343836d635a41227e8.gif');
-INSERT INTO `custom_evaluation_table` VALUES ('23', '2222222222', 'bbbbbbbbbbbb', 'bcb8a9774b73a5714da632270227444b.gif');
-INSERT INTO `custom_evaluation_table` VALUES ('24', '33333333', 'cccccccccccccccccc', '4007f5347b07ca42fdc8a7931394c9ba.gif');
 
 -- ----------------------------
 -- Table structure for intro_table

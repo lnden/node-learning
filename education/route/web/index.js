@@ -17,10 +17,18 @@ module.exports = function(){
 			}
 		})
 	})
+	router.get('/get_custom',(req,res)=>{
+		db.query(`SELECT * FROM custom_evaluation_table`,(err,data)=>{
+			if(err){
+				console.error(err);
+				res.status(500).send('database error').end();
+			}else{
+				console.log(data)
+				res.status(200).send(data).end();
+			}
+		})
+	})
 	
-	// router.get('/get_custom',(req,res)=>{
-	// 	res.send('我是web').end();
-	// })
 	return router
 }
 
