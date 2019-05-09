@@ -9,7 +9,7 @@
   "keywords": [
     "express"
   ],
-  "author": "lindong",
+  "author": "lnden",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4"
